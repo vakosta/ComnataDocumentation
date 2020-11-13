@@ -258,7 +258,15 @@ labelsep=emdash
 \hfill
 \begin{tabular}{c}
     \\
-    Исполнитель: \@authorTitle
+    Исполнители:
+    \\
+    \@authorTitle
+    \\
+    \underline{\hspace{4cm}} Панфилов Е. П.
+    \\
+    <<\underline{\hspace{1cm}}>> \underline{\hspace{4cm}} \@year~г.
+    \\\\
+    \@authorTitle
     \\
     \underline{\hspace{4cm}} \@author
     \\
