@@ -7,6 +7,7 @@
 \subsection{Требования к надёжности}
 
 \subsubsection{Требования к обеспечению надёжного (устойчивого) функционирования программы}
+
 \paragraph{Требования для WEB-клиента}
 Разрабатываемое приложение должно:
 \begin{enumerate}
@@ -18,7 +19,14 @@
 \begin{enumerate}
     \item запрещать доступ к REST API методам для неавторизованных пользователей;
     \item не показывать информацию из посторонних общежитий для авторизованных пользователей;
-    \item не показывать чужие обращения пользователю.
+    \item не показывать чужие обращения пользователю;
+    \item быть устойчивым к атакам следующего типа:
+    \begin{enumerate}
+        \item Cross-Site Scripting (XSS),
+        \item SQL Injection,
+        \item Local File Inclusion (LFI),
+        \item Distributed Denial of Service (DDoS).
+    \end{enumerate}
 \end{enumerate}
 
 \subsubsection{Время восстановления после отказа}
@@ -66,7 +74,7 @@ iOS, а также с одним из браузеров: Google Chrome, Firefox
 \end{enumerate}
 
 \subsubsection{Требования к исходным кодам и языкам программирования}
-\paragraph{Требования для WEB-клиента}
+
 Исходные коды для WEB-клиента должны быть реализованы с использованием следующих языков и технологий:
 \begin{enumerate}[noitemsep]
     \item HTML5 и CSS — для реализации графического представления клиента;
@@ -74,7 +82,6 @@ iOS, а также с одним из браузеров: Google Chrome, Firefox
     \item ReactJS или vue.js — для реализации архитектуры и программной логики WEB-клиента.
 \end{enumerate}
 
-\paragraph{Требования для сервера}
 Исходные коды для сервера должны быть реализованы с использованием следующих языков и технологий:
 \begin{enumerate}[noitemsep]
     \item Java;

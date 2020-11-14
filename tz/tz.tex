@@ -8,6 +8,18 @@
 \setcounter{tocdepth}{2}
 \setcounter{secnumdepth}{3}
 
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\newcommand{\intro}[2]{
+\stepcounter{section}
+\section*{\hfillПРИЛОЖЕНИЕ #2}
+\begin{center}
+    \Large\bf{#1}
+\end{center}
+\markboth{\MakeUppercase{#1}}{}
+\addcontentsline{toc}{section}{Приложение #2. #1}
+}
+
 \title{Приложение для совместного просмотра фильмов}
 \author{Студент группы БПИ194}{Анненков В. А.}
 \academicTeacher{Старший преподаватель департамента программной инженерии факультета компьютерных наук}{А. В. Поповкин}
@@ -37,6 +49,8 @@
     \input{includes/development_stages}
 
     \input{includes/control_procedure}
+
+    \input{includes/terminology}
 
     \registrationList
 \end{document}
