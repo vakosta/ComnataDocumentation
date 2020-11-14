@@ -1,0 +1,56 @@
+\documentclass{../../includes/TechDocMultiAuthors}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{hyperref}
+\usepackage{amssymb}
+\usepackage{amsmath,amsthm,mathtools}
+
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+\newcommand{\intro}[2]{
+\stepcounter{section}
+\section*{\hfillПРИЛОЖЕНИЕ #2}
+\begin{center}
+    \Large\bf{#1}
+\end{center}
+\markboth{\MakeUppercase{#1}}{}
+\addcontentsline{toc}{section}{Приложение #2. #1}
+}
+
+\title{Приложение для совместного просмотра фильмов}
+\author{Студент группы БПИ194}{Анненков В. А.}
+\academicTeacher{Старший преподаватель департамента программной инженерии факультета компьютерных наук}{А. В. Поповкин}
+
+\documentTitle{Техническое задание}
+\documentCode{RU.17701729.02.07-01 ТЗ 01-1}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+    \newpage
+    \input{includes/annotation}
+    \newpage
+
+    \input{includes/intro}
+
+    \input{includes/use}
+
+    \input{includes/program_requirements}
+
+    \input{includes/documentation_requirements}
+
+    \input{includes/technical_indicators}
+
+    \input{includes/development_stages}
+
+    \input{includes/control_procedure}
+
+    \input{includes/terminology}
+
+    \registrationList
+\end{document}
