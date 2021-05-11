@@ -330,16 +330,40 @@
 
     \subsubsection{Примеры запросов}
 
+    \paragraph{Протокол HTTP}
+
     \noindentОтправлен корректный запрос с видеофайлом на адрес \url{https://comnata.tv/video/upload};\\
 
     \noindentПолучен ответ:
-    \begin{lstlisting}
+    \begin{lstlisting}[language=json,caption={Пример ответа при работе с HTTP протоколом}]
     {
   		"status": "SUCCESS",
   		"videoId": "322e60eedf4245a08ebc1d9bfc23a5bd",
   		"videoUrl": "/video/getVideo/322e60eedf4245a08ebc1d9bfc23a5bd/video.m3u8"
 	}
     \end{lstlisting}
+
+    \paragraph{Протокол WebSocket}
+
+    \begin{lstlisting}[language=json,caption={Пример запроса при работе с HTTP протоколом}]
+    >>> SEND
+	destination:/app/room/B73EAD/chatMessage
+	content-length:14
+
+	{"text":"Hello World!"}
+    \end{lstlisting}
+
+    \begin{lstlisting}[language=json,caption={Пример ответа при работе с WebSocket протоколом}]
+    <<< MESSAGE
+	destination:/topic/room/B73EAD/chatMessages
+	content-type:application/json
+	subscription:sub-2
+	message-id:31jgkb5n-1
+	content-length:306
+
+	{"notificationType":"CHAT_MESSAGE","userId":"fb98d417-3ce4-46ed-9d50-e9c8ebdcdd15","text":"Hello World!","dateTime":{"dayOfWeek":"TUESDAY","dayOfYear":131,"nano":973629000,"year":2021,"monthValue":5,"dayOfMonth":11,"hour":13,"minute":13,"second":18,"month":"MAY","chronology":{"id":"ISO","calendarType":"iso8601"}}}
+    \end{lstlisting}
+
 
     \clearpage
 
@@ -392,13 +416,9 @@
     Данный инструмент лежит в основе реализации конвертации видео в формат HLS.
 
     В качестве СУБД была выбрана система PostgreSQL\@.
-    Такое решение было принято по нескольким причинам:
-    \begin{enumerate}
-        \item открытый исходный код СУБД, что делает её бесплатной;
-        \item адаптированность для хранения и обработки больших объёмов данных;
-        \item хорошая поддержка фреймворком Spring Data;
-        \item возможность получить бесплатную базу данных PostgreSQL в админ-панели Heroku.
-    \end{enumerate}
+    Данная СУБД имеет отрытый исходный код и полностью бесплатна.
+    Также PostgreSQL адаптирована для хранения и обработки больших объёмов данных и хорошо поддерживается фреймворком Spring Data.
+    Heroku предоставляет бесплатный доступ к базе данных PostgreSQL.
 
     Так как сервер написан на микросервисной архитектуре, то полезно настроить контейнер Docker, чтобы переносимость сервера была безболезненной.
     К каждому сервису написан Dockerfile, который можно запустить одной командой для запуска его контейнера Docker.
@@ -415,6 +435,9 @@
 
     Большинство существующих сервисов поддерживают воспроизведение видео из существующей базы, не предоставляя пользователям возможность смотреть любые желаемые видео.
     Кроме того, сервисы, которые всё-таки имеют возможность загрузки видео, не позволяют просматривать видео в процессе его обработки -- для просмотра требуется дождаться полной обработки, а этот процесс может быть длительным.
+
+    Ещё одно преимущество перед аналогами -- наличие <<реакций>>, которые реализованы в виде смайликов.
+    С их помощью можно выразить какую-то эмоцию, не потратив время на набор текстового сообщения.
 
     \clearpage
 
@@ -457,16 +480,18 @@
     \intro{Терминология}
 
     \noindent
+    \textbf{HLS (HTTP Live Streaming)} -- протокол для потоковой передачи медиа, разработанный компанией Apple.\\\\
+    \textbf{HTTP} -- протокол передачи данных, работающий в режиме <<запрос-ответ>>.\\\\
     \textbf{IoC (Inversion of Control)} -- архитектурный принцип объектно-ориентированного программирования, используемый для уменьшения зацепления (связанности) в компьютерных программах.\\\\
-    \textbf{HLS (HTTP Live Streaming)} -- коммуникационный протокол для потоковой передачи медиа на основе HTTP, разработанный компанией Apple.\\\\
+    \textbf{WebSocket} -- протокол поверх TCP-соединения, позволяющий взаимодействовать клиенту и серверу в режиме реального времени.\\\\
     \textbf{База данных} -- совокупность данных, хранимых в соответствии со схемой данных, манипулирование которыми выполняют в соответствии с правилами средств моделирования данных.\\\\
+    \textbf{Клиент} -- приложение, которое подключается к серверу.\\\\
+    \textbf{Комната} -- виртуальное пространство, в котором воспроизводится видео и к которому могут подключаться пользователи.\\\\
     \textbf{Реакция} -- всплывающий смайлик для быстрой передачи эмоций во время просмотра.\\\\
     \textbf{Терминал} -- разновидность текстового интерфейса между человеком и компьютером, в котором инструкции компьютеру даются в основном путём ввода с клавиатуры текстовых строк (команд).\\\\
-    \textbf{Комната} -- виртуальное пространство, в котором воспроизводится видео и к которому могут подключаться пользователи.\\\\
-    \textbf{Клиент} -- приложение, которое подключается к серверу.\\\\
     \textbf{Сегмент} -- небольшой отрывок из исходного видео.\\\\
     \textbf{Сервер} -- выделенный или специализированный компьютер для выполнения сервисного программного обеспечения.\\\\
-    \textbf{Серверное приложение} -- программа на сервере.\\\\
+    \textbf{Серверное приложение} -- программа, запущенная на сервере.\\\\
     \textbf{СУБД} -- система управления базами данных.\\\\
     \textbf{Фреймворк} -- дополнение к программе, расширяющее функционал или упрощающее процесс разработки.\\\\
 
@@ -503,8 +528,8 @@
 
     В базе данных:
     \begin{itemize}
+        \item[--] таблица \emph{room} хранит информацию о комнатах для просмотра видео;
         \item[--] таблица \emph{app\_user} хранит информацию о пользователях;
-        \item[--] таблица \emph{room} хранит информацию о комнатах;
         \item[--] таблица \emph{flyway\_schema\_history} хранит информацию о применённых миграциях к базе данных.
     \end{itemize}
 
@@ -523,43 +548,55 @@
             \hline
             \textbf{Класс}           & \textbf{Назначение}                                                    \\
             \hline
-            MainController              & Контроллер с основными методами                                        \\
+            MainController              & Контроллер с основными методами.                                        \\
             \hline
-            WebsocketController         & Контроллер с методами для взаимодействия через протокол WebSocket      \\
+            WebsocketController         & Контроллер с методами для взаимодействия через протокол WebSocket.      \\
             \hline
-            RoomService                 & Сервис работы с комнатами                                              \\
+            RoomService                 & Сервис работы с комнатами.                                              \\
             \hline
-            WebsocketService            & Сервис для взаимодействия с WebSocket                                  \\
+            WebsocketService            & Сервис для взаимодействия с WebSocket.                                  \\
             \hline
-            RoomRepository              & Репозиторий для получения информации о комнатах                        \\
+            RoomRepository              & Репозиторий для получения информации о комнатах.                        \\
             \hline
-            UserRepository              & Репозиторий для получения информации о пользователях                   \\
+            UserRepository              & Репозиторий для получения информации о пользователях.                   \\
             \hline
-            WebsocketEventListener      & Слушатель для определения событий подключения/отключения пользователей \\
+            WebsocketEventListener      & Слушатель для определения событий подключения/отключения пользователей. \\
             \hline
-            Room                        & Модель комнаты                                                         \\
+            Room                        & Модель комнаты.                                                         \\
             \hline
-            User                        & Модель пользователя                                                    \\
+            User                        & Модель пользователя.                                                    \\
             \hline
-            RoomActionRequest           & Модель запроса для синхронизации видео                                 \\
+            RoomActionRequest           & Модель запроса для синхронизации видео.                                 \\
             \hline
-            RoomChatMessageRequest      & Модель запроса для сообщений в чате                                    \\
+            RoomChatMessageRequest      & Модель запроса для сообщений в чате.                                    \\
             \hline
-            RoomReactionRequest         & Модель запроса для реакций                                             \\
+            RoomReactionRequest         & Модель запроса для реакций.                                             \\
             \hline
-            Response                    & Абстрактная модель ответа                                              \\
+            Response                    & Абстрактная модель ответа.                                              \\
             \hline
-            RoomActionResponse          & Модель ответа для синхронизации видео                                  \\
+            RoomActionResponse          & Модель ответа для синхронизации видео.                                  \\
             \hline
-            RoomChatMessageResponse     & Модель ответа для сообщений в чате                                     \\
+            RoomChatMessageResponse     & Модель ответа для сообщений в чате.                                     \\
             \hline
-            RoomJoinResponse            & Модель ответа для подключений к комнате                                \\
+            RoomJoinResponse            & Модель ответа для подключений к комнате.                                \\
             \hline
-            RoomLeftResponse            & Модель ответа для выходов из комнаты                                   \\
+            RoomLeftResponse            & Модель ответа для выходов из комнаты.                                   \\
             \hline
-            RoomReactionResponse        & Модель ответа для реакции                                              \\
+            RoomReactionResponse        & Модель ответа для реакции.                                              \\
             \hline
-            WebsocketEnums              & Enum классы для WebSocket                                              \\
+            WebsocketEnums              & Enum классы для WebSocket.                                              \\
+            \hline
+            CustomHandshakeHandler              & Конфигуратор для генерации ID пользователя при подключении к серверу через протокол WebSocket.                                              \\
+            \hline
+            StompPrincipal              & Конфигуратор для получения ID пользователя, подключённого по протоколу WebSocket.                                              \\
+            \hline
+            WebSocketConfig              & Общий конфигуратор WebSocket протокола.                                              \\
+            \hline
+            AppConfig              & Общий конфигуратор сервиса.                                              \\
+            \hline
+            SwaggerConfig              & Конфигуратор для автоматически генерируемой документации.                                              \\
+            \hline
+            WebSecurityConfig              & Конфигуратор безопасности для корректной и безопасной работы клиентов.                                              \\
             \hline
         \end{tabularx}
     \end{table}
@@ -570,15 +607,21 @@
             \hline
             \textbf{Класс}           & \textbf{Назначение}                              \\
             \hline
-            VideoController             & Контроллер для взаимодействия с видеофайлами     \\
+            VideoController             & Контроллер для взаимодействия с видеофайлами.     \\
             \hline
-            VideoService                & Сервис для работы с видеофайлами                 \\
+            VideoService                & Сервис для работы с видеофайлами.                 \\
             \hline
-            FfmpegManager               & Класс для обработки видеофайлов с помощью ffmpeg \\
+            FfmpegManager               & Класс для обработки видеофайлов с помощью ffmpeg. \\
             \hline
-            VideoResolution             & Модель разрешения видео                          \\
+            VideoResolution             & Модель разрешения видео.                          \\
             \hline
-            MainClient                  & Клиент для получения информации из MainService   \\
+            MainClient                  & Клиент для получения информации из MainService.   \\
+            \hline
+            AppConfig                  & Общий конфигуратор сервиса.   \\
+            \hline
+            SwaggerConfig                  & Конфигуратор для автоматически генерируемой документации.   \\
+            \hline
+            WebSecurityConfig                  & Конфигуратор безопасности для корректной и безопасной работы клиентов.   \\
             \hline
         \end{tabularx}
     \end{table}
@@ -899,6 +942,77 @@
         \end{tabularx}
     \end{table}
 
+    \begin{table}[h]
+        \caption{\label{tab:class-CustomHandshakeHandler-table}Описание полей, методов и свойств класса CustomHandshakeHandler}
+        \begin{tabularx}{\textwidth}{|l|l|l|p{4cm}|X|}
+            \hline
+            \multicolumn{5}{|c|}{CustomHandshakeHandler} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            determineUser   & public            & Principal         & request: ServerHttpRequest, wsHandler: WebSocketHandler, attributes: MutableMap<String, Any>    & Метод для определения ID нового пользователя      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-StompPrincipal-table}Описание полей, методов и свойств класса StompPrincipal}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{StompPrincipal} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            getName   & public            & String         & -    & Метод для получения ID пользователя      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-WebSocketConfig-table}Описание полей, методов и свойств класса WebSocketConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|p{4.3cm}|X|}
+            \hline
+            \multicolumn{5}{|c|}{WebSocketConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            configureMessageBroker   & public            & void         & config: MessageBrokerRegistry    & Метод для определения базовых путей для общения с сервером по протоколу WebSocket      \\ \hline
+            registerStompEndpoints   & public            & void         & registry: StompEndpointRegistry    & Метод для определения базовых путей для общения с сервером по протоколу WebSocket      \\ \hline
+            configureMessageConverters   & public            & Boolean         & messageConverters: MutableList <MessageConverter?>    & Мето для конфигурации WebSocket      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-AppConfig-table}Описание полей, методов и свойств класса AppConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{AppConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            multipartConfigElement   & public            & MultipartConfigElement         & -    & Метод для определения максимального размера загружаемых на сервер файлов      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-SwaggerConfig-table}Описание полей, методов и свойств класса SwaggerConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{SwaggerConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            api   & public            & Docket?         & -    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+            addResourceHandlers   & public            & void         & registry: ResourceHandlerRegistry    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-WebSecurityConfig-table}Описание полей, методов и свойств класса WebSecurityConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{WebSecurityConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            configure   & public            & void         & http: HttpSecurity    & Метод с настройками безопасности для корректной и безопасной работы клиентов      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+
+
     \intro{Описание и функциональное назначение полей, методов и свойств модуля VideoService}
 
     \begin{table}[h]
@@ -970,6 +1084,24 @@
     \end{table}
 
     \begin{table}[h]
+        \caption{\label{tab:class-VideoResolution-table}Описание полей, методов и свойств класса VideoResolution}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{VideoResolution} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Поля}} \\ \hline
+            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип} & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{\textbf{Назначение}} \\ \hline
+            width & private & Int & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Ширина видео} \\ \hline
+            height & private & Int & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Высота видео} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}                & \textbf{М. дост.} & \textbf{Тип}        & \textbf{Арг.}                                                   & \textbf{Назначение}                                                                  \\ \hline
+            getBandwidth             & public            & Int                & -                              & Метод для получения разрешения видео                                       \\ \hline
+            getBaseFileText             & public            & String                & -                              & Метод для получения расположения базового файла определённого разрешения                                       \\ \hline
+            toString             & public            & String                & -                              & Метод для текстового представления разрешения                                       \\ \hline
+            compareTo             & public            & Int                & other: VideoResolution                              & Метод для сравнения двух разрешений                                       \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
         \caption{\label{tab:class-MainClient-table}Описание полей, методов и свойств класса MainClient}
         \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
             \hline
@@ -978,6 +1110,40 @@
             \textbf{Имя}     & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}                          & \textbf{Назначение}                      \\ \hline
             createVideo      & public            & String?      & videoUuid: String?                     & Метод для сохранения комнаты в базу      \\ \hline
             setVideoProgress & public            & String?      & videoUuid: String?, videoProgress: Int & Метод для поиска комнаты в базе по имени \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-AppConfig-table}Описание полей, методов и свойств класса AppConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{AppConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            multipartConfigElement   & public            & MultipartConfigElement         & -    & Метод для определения максимального размера загружаемых на сервер файлов      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-SwaggerConfig-table}Описание полей, методов и свойств класса SwaggerConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{SwaggerConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            api   & public            & Docket?         & -    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+            addResourceHandlers   & public            & void         & registry: ResourceHandlerRegistry    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+        \end{tabularx}
+    \end{table}
+
+    \begin{table}[h]
+        \caption{\label{tab:class-WebSecurityConfig-table}Описание полей, методов и свойств класса WebSecurityConfig}
+        \begin{tabularx}{\textwidth}{|l|l|l|l|X|}
+            \hline
+            \multicolumn{5}{|c|}{WebSecurityConfig} \\ \hline
+            \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
+            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
+            configure   & public            & void         & http: HttpSecurity    & Метод с настройками безопасности для корректной и безопасной работы клиентов      \\ \hline
         \end{tabularx}
     \end{table}
 
