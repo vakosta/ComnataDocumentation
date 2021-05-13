@@ -1,4 +1,4 @@
-\documentclass{../includes/TechDocMultiAuthors}
+\documentclass{../../includes/TechDoc}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
@@ -151,13 +151,7 @@
 
     \section{Методы испытаний}
 
-    \subsection{Методы испытаний клиента}
-
-    Здесь что-то...
-
-    \subsection{Методы испытаний сервера}
-
-    \subsubsection{Загрузка видео на сервер}
+    \subsection{Загрузка видео на сервер}
 
     Попробуем загрузить некорректный файл на сервер по адресу <</video/upload>>.
     Получили ответ от сервера с ошибкой.
@@ -191,7 +185,7 @@
 
     \begin{figure}[h]
         \centering
-        \includegraphics[width=0.7\linewidth]{images/hls1.png}
+        \includegraphics[width=0.7\linewidth]{../images/hls1.png}
         \caption{Папка со всеми видео}
         \label{fig:hls1}
     \end{figure}
@@ -201,20 +195,20 @@
     \begin{figure}[h]
         \begin{center}
             \begin{minipage}[h]{0.49\linewidth}
-                \includegraphics[width=1\linewidth]{images/hls2.png}
+                \includegraphics[width=1\linewidth]{../images/hls2.png}
                 \caption{Папка видео} %% подпись к рисунку
                 \label{fig:hls2} %% метка рисунка для ссылки на него
             \end{minipage}
             \hfill
             \begin{minipage}[h]{0.49\linewidth}
-                \includegraphics[width=1\linewidth]{images/hls3.png}
+                \includegraphics[width=1\linewidth]{../images/hls3.png}
                 \caption{Папка отдельного разрешения}
                 \label{fig:hls3}
             \end{minipage}
         \end{center}
     \end{figure}
 
-    \subsubsection{Подключение к комнате}
+    \subsection{Подключение к комнате}
 
     При подключении к комнате отправляем команду <<join>> на сервер.
     Сервер в ответ присылает информацию о новом клиенте и массив всех подключённых к комнате клиентов.
@@ -237,7 +231,7 @@
     {"notificationType":"JOIN","newUserId":"10146210-a233-4e2a-a913-691ddaaaff63","allUserIds":["10146210-a233-4e2a-a913-691ddaaaff63"],"dateTime":{"dayOfWeek":"FRIDAY","dayOfYear":134,"nano":830282000,"year":2021,"monthValue":5,"dayOfMonth":14,"hour":0,"minute":3,"second":58,"month":"MAY","chronology":{"id":"ISO","calendarType":"iso8601"}}}
     \end{lstlisting}
 
-    \subsubsection{Отправка сообщения в чат}
+    \subsection{Отправка сообщения в чат}
 
     При корректной отправке команды <<chatMessage>> сервер возвращает полную информацию о полученном сообщении всем клиентам.
     Клиенты могут использовать эту информацию для отображения новых сообщений на экране пользователя.
@@ -260,7 +254,7 @@
     {"notificationType":"CHAT_MESSAGE","userId":"8c93f5fc-b8f2-4596-a681-38c4e48e8414","text":"Hello World!","dateTime":{"dayOfWeek":"THURSDAY","dayOfYear":133,"nano":981977000,"year":2021,"monthValue":5,"dayOfMonth":13,"hour":22,"minute":46,"second":55,"month":"MAY","chronology":{"id":"ISO","calendarType":"iso8601"}}}
     \end{lstlisting}
 
-    \subsubsection{Отправка <<реакции>>}
+    \subsection{Отправка <<реакции>>}
 
     При корректной отправке команды <<reaction>> сервер возвращает полную информацию о полученной реакции всем клиентам.
     Клиенты могут использовать эту информацию для отображения новых реакций на экране пользователя.
@@ -283,7 +277,7 @@
     {"notificationType":"REACTION","author":"8c93f5fc-b8f2-4596-a681-38c4e48e8414","type":"GOOD","actionTime":{"dayOfWeek":"THURSDAY","dayOfYear":133,"nano":522168000,"year":2021,"monthValue":5,"dayOfMonth":13,"hour":23,"minute":31,"second":50,"month":"MAY","chronology":{"id":"ISO","calendarType":"iso8601"}}}
     \end{lstlisting}
 
-    \subsubsection{Отправка действий для синхронизации (воспроизведение/пауза)}
+    \subsection{Отправка действий для синхронизации (воспроизведение/пауза)}
 
     При корректной отправке команды <<videoAction>> сервер возвращает полную информацию о полученном действии всем клиентам.
     Клиенты могут использовать эту информацию для отображения новых реакций на экране пользователя.
@@ -309,7 +303,7 @@
     {"notificationType":"VIDEO_ACTION","actionId":-1,"author":"8c93f5fc-b8f2-4596-a681-38c4e48e8414","seekTime":8.339047,"type":"RESUME","step":"READY","actionTime":{"dayOfWeek":"THURSDAY","dayOfYear":133,"nano":23081000,"year":2021,"monthValue":5,"dayOfMonth":13,"hour":23,"minute":37,"second":34,"month":"MAY","chronology":{"id":"ISO","calendarType":"iso8601"}}}
     \end{lstlisting}
 
-    \subsubsection{Отправка действий для синхронизации (перемотка)}
+    \subsection{Отправка действий для синхронизации (перемотка)}
 
     При корректной отправке команды <<videoAction>> сервер передаёт в параметре <<step>> значение <<CHECK>> и просит подтвердить готовность к воспроизведению видео.
 
