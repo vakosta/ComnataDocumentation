@@ -262,7 +262,7 @@ labelsep=emdash
     \\
     \@authorTitle
     \\
-    \underline{\hspace{4cm}} Панфилов Е. П.
+    \underline{\hspace{4cm}} Е. П. Панфилов
     \\
     <<\underline{\hspace{1cm}}>> \underline{\hspace{4cm}} \@year~г.
     \\\\
