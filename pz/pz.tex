@@ -33,7 +33,7 @@
 \academicTeacher{Старший преподаватель департамента программной инженерии факультета компьютерных наук}{А. В. Поповкин}
 
 \documentTitle{Пояснительная записка}
-\documentCode{RU.17701729.02.07-01 81 01-1}
+\documentCode{RU.17701729.02.06-01 81 01-1}
 
 \begin{document}
     \maketitle
@@ -115,6 +115,12 @@
     Сервер может быть использован frontend-клиентами для реализации логики совместного просмотра фильмов.
 
     <<Приложение для совместного просмотра фильмов>> может быть использовано пользователями для совместного просмотра фильмов или других видео на расстоянии.
+    Для этого пользователю требуется только открыть сайт и загрузить видео.
+    После этого можно сразу же начать просмотр фильма.
+
+    В приложении реализован широкий функционал для общения и взаимодействия пользователей друг с другом.
+    Можно писать сообщения или отправлять реакции -- всё для того, чтобы добиться максимального погружения в процесс совместного просмотра фильма.
+
     Данное приложение становится особенно актуальным, когда требуется что-то посмотреть наиболее простым способом.
     Для этого в приложении реализован минималистичный интерфейс, возможность быстро загрузить собственный файл с фильмом и сразу же начать его просмотр.
     Приложение не ограничивает пользователя собственной базой фильмов, предоставляя пользователю возможность самостоятельно загружать файлы с фильмами.
@@ -378,6 +384,7 @@
         \item Spring Flyway -- для миграций и версионирования базы данных;
         \item Hibernate, Spring Data -- для работы с базой данных, для связки таблиц базы данных с классами Java;
         \item ffmpeg -- для обработки видеофайлов: нарезка и изменение качества;
+        \item Swagger -- для автоматической генерации документации к методам API;
         \item PostgreSQL -- использовать в качестве СУБД;
         \item Docker, docker-compose -- для обеспечения переносимости сервера.
     \end{enumerate}
@@ -415,6 +422,10 @@
     ffmpeg позволяет конвертировать видео в любой формат, добавлять аудиодорожки, менять разрешение и многое другое.
     Данный инструмент лежит в основе реализации конвертации видео в формат HLS.
 
+    Swagger -- инструмент для автоматической генерации документации по методам API.
+    Данный инструмент анализирует на этапе компиляции controller-классы сервера и их методы, помеченные аннотацией @RequestMapping.
+    В результате, разработчик клиента может зайти по адресу /swagger-ui/ и посмотреть самые актуальные методы API.
+
     В качестве СУБД была выбрана система PostgreSQL\@.
     Данная СУБД имеет отрытый исходный код и полностью бесплатна.
     Также PostgreSQL адаптирована для хранения и обработки больших объёмов данных и хорошо поддерживается фреймворком Spring Data.
@@ -429,7 +440,12 @@
 
     \subsection{Предполагаемая потребность}
 
-    Приложение могут использовать пользователи для совместного просмотра фильмов дистанционно.
+    Приложение могут использовать пользователи для совместного просмотра фильмов на расстоянии.
+    Для этого пользователю требуется только открыть сайт и загрузить видео.
+    После этого можно сразу же начать просмотр фильма.
+
+    В приложении реализован широкий функционал для общения и взаимодействия пользователей друг с другом.
+    Можно писать сообщения или отправлять реакции -- всё для того, чтобы добиться максимального погружения в процесс совместного просмотра фильма.
 
     \subsection{Экономические преимущества по сравнению с отечественными и зарубежными аналогами}
 
@@ -452,19 +468,19 @@
         \item ГОСТ 19.105-78 Общие требования к программным документам. // Единая система программной документации. – М.: ИПК Издательство стандартов, 2001.
         \item ГОСТ 19.106-78 Требования к программным документам, выполненным печатным способом. // Единая система программной документации. – М.: ИПК Издательство стандартов, 2001
         \item ГОСТ 19.404-79 Пояснительная записка. Требования к содержанию и оформлению. // Единая система программной документации. – М.: ИПК Издательство стандартов, 2001.
-        \item Загрузка файлов [Электронный ресурс] / Spring-Projects. Режим доступа: \url{https://spring-projects.ru/guides/uploading-files/}, свободный. (Дата обращения: 15.05.2020)
+        \item Загрузка файлов [Электронный ресурс] / Spring-Projects. Режим доступа: \href{https://spring-projects.ru/guides/uploading-files/}{https://spring- projects.ru/guides/uploading-files/}, свободный. (Дата обращения: 15.05.2020)
         \item Как установить и настроить PostgreSQL в MacOS [Электронный ресурс] / 900913. Режим доступа: \url{https://900913.ru/note/b/postgresql-macos-9da176/}, свободный. (Дата обращения: 15.05.2020)
         \item Курс по Spring / ВТБ // [Электронный ресурс]: Google Drive. Режим доступа: \url{https://drive.google.com/drive/folders/1PQspMs1gm8aIFNua9l-wDsjgPxidqfhC}, свободный. (Дата обращения: 15.05.2021)
-        \item Тянем ролик с Youtube и раздаем по WebRTC в реалтайме [Электронный ресурс] / Flashphoner. Режим доступа: \url{https://flashphoner.com/tyanem-rolik-s-youtube-i-razdaem-po-webrtc-v-realtajme/?lang=ru}, свободный. (Дата обращения: 15.05.2020)
+        \item Тянем ролик с Youtube и раздаем по WebRTC в реалтайме [Электронный ресурс] / Flashphoner. Режим доступа: \href{https://flashphoner.com/tyanem-rolik-s-youtube-i-razdaem-po-webrtc-v-realtajme/?lang=ru}{https://flashphoner.com/tyanem-rolik-s-youtube-i-razdaem-po-webrtc-v-realtaj me/?lang=ru}, свободный. (Дата обращения: 15.05.2020)
         \item Adaptive HTTP Streaming Technologies: HLS vs. DASH / Tech Blog // [Электронный ресурс]: StriveCast. Режим доступа: \url{https://strivecast.com/hls-vs-mpeg-dash/}, свободный. (Дата обращения: 15.05.2021)
         \item Create Multiple tables [Электронный ресурс] / LaunchSchool. Режим доступа: \url{https://launchschool.com/books/sql_first_edition/read/multi_tables}, свободный. (Дата обращения: 15.05.2020)
         \item Docker документация [Электронный ресурс] / Docker. Режим доступа: \url{https://docs.docker.com/}, свободный. (Дата обращения: 15.05.2020)
         \item ffmpeg документация [Электронный ресурс] / ffmpeg. Режим доступа: \url{https://ffmpeg.org/ffmpeg.html}, свободный. (Дата обращения: 15.05.2020)
         \item GitHub [Электронный ресурс]. Режим доступа: \url{https://github.com/}, свободный. (Дата обращения: 15.05.2020)
-        \item How do I use ffmpeg to get the video resolution? / Vladimir Stazhilov // [Электронный ресурс]: SuperUser. Режим доступа: \url{https://superuser.com/questions/841235/how-do-i-use-ffmpeg-to-get-the-video-resolution}, свободный. (Дата обращения: 15.05.2021)
-        \item How to create .mpd or .m3u8 video file on the server using FFMPEG for Adaptive Streaming / Mayur Solanki // [Электронный ресурс]: Medium. Режим доступа: \url{https://mayur-solanki.medium.com/how-to-create-mpd-or-m3u8-video-file-from-server-using-ffmpeg-97e9e1fbf6a3}, свободный. (Дата обращения: 15.05.2021)
-        \item How to read ffmpeg response from java and use it to create a progress bar? / shalki // [Электронный ресурс]: StackOverflow. Режим доступа: \url{https://stackoverflow.com/questions/10927718/how-to-read-ffmpeg-response-from-java-and-use-it-to-create-a-progress-bar}, свободный. (Дата обращения: 15.05.2021)
-        \item How video streaming works on the web: An introduction / Paul Berberian // [Электронный ресурс]: Medium. Режим доступа: \url{https://medium.com/canal-tech/how-video-streaming-works-on-the-web-an-introduction-7919739f7e1}, свободный. (Дата обращения: 15.05.2021)
+        \item How do I use ffmpeg to get the video resolution? / Vladimir Stazhilov // [Электронный ресурс]: SuperUser. Режим доступа: \href{https://superuser.com/questions/841235/how-do-i-use-ffmpeg-to-get-the-video-resolution}{https://superuser.com/questions/841235/how-do-i-use- ffmpeg-to-get-the-video-resolution}, свободный. (Дата обращения: 15.05.2021)
+        \item How to create .mpd or .m3u8 video file on the server using FFMPEG for Adaptive Streaming / Mayur Solanki // [Электронный ресурс]: Medium. Режим доступа: \href{https://mayur-solanki.medium.com/how-to-create-mpd-or-m3u8-video-file-from-server-using-ffmpeg-97e9e1fbf6a3}{https://mayur-solanki. medium.com/how-to-create-mpd-or-m3u8-video-file-from-server-using-ffmpeg-97e9e1fbf6a3}, свободный. (Дата обращения: 15.05.2021)
+        \item How to read ffmpeg response from java and use it to create a progress bar? / shalki // [Электронный ресурс]: StackOverflow. Режим доступа: \href{https://stackoverflow.com/questions/10927718/how-to-read-ffmpeg-response-from-java-and-use-it-to-create-a-progress-bar}{https://stackoverflow.com/questions/10927 718/how-to-read-ffmpeg-response-from-java-and-use-it-to-create-a-progress-bar}, свободный. (Дата обращения: 15.05.2021)
+        \item How video streaming works on the web: An introduction / Paul Berberian // [Электронный ресурс]: Medium. Режим доступа: \href{https://medium.com/canal-tech/how-video-streaming-works-on-the-web-an-introduction-7919739f7e1}{https://medium.com/canal-tech/how-video-streaming-works-on-the-web-an-introduction-7919739f7e1}, свободный. (Дата обращения: 15.05.2021)
         \item Kotlin документация [Электронный ресурс] / JetBrains. Режим доступа: \url{https://kotlinlang.org/docs/}, свободный. (Дата обращения: 15.05.2020)
         \item PostgreSQL документация [Электронный ресурс] / PostgreSQL. Режим доступа: \url{https://www.postgresql.org/docs/}, свободный. (Дата обращения: 15.05.2020)
         \item Spring документация [Электронный ресурс] / Spring. Режим доступа: \url{https://spring.io/}, свободный. (Дата обращения: 15.05.2020)
@@ -493,16 +509,23 @@
     \textbf{Сервер} -- выделенный или специализированный компьютер для выполнения сервисного программного обеспечения.\\\\
     \textbf{Серверное приложение} -- программа, запущенная на сервере.\\\\
     \textbf{СУБД} -- система управления базами данных.\\\\
-    \textbf{Фреймворк} -- дополнение к программе, расширяющее функционал или упрощающее процесс разработки.\\\\
+    \textbf{Фреймворк} -- компонент к программе, который включает в себя дополнительный реализованный функционал, упрощающий разработку.\\\\
 
     \intro{Описание формата HLS}
 
-    Формат HLS представляет из себя набор файлов с расширениями \emph{.m3u8} (один файл) и \emph{.ts} (несколько файлов).
+    Формат HLS представляет из себя набор файлов с расширениями \emph{.m3u8} (\(1-10\) файлов, в зависимости от количества разрешений) и \emph{.ts} (\(1-\infty\) файлов, в зависимости от длительности ролика).
 
     \begin{itemize}
         \item[--] \emph{.m3u8} -- Обычный текстовый файл, который содержит информацию о расположении файлов с расширением \emph{.ts}.
         Может ссылаться как на медиа-файлы, так и на другие файлы с расширением \emph{.m3u8}.
         Например, для указания разрешений видео.
+
+        Тег <<#EXTINF>> определяет длительность сегмента.
+        Сразу после тега идёт путь до сегмента, который использует клиент, чтобы сделать верный запрос на сервер.
+
+        Сегменты могут добавляться в файл \emph{.m3u8} в режиме реального времени.
+        Если в конце файла \emph{.m3u8} нет тега <<#EXT-X-ENDLIST>>, то клиент будет раз в несколько секунд делать запрос для получения файла \emph{.m3u8}, чтобы обнаружить пути новых сегментов.
+        Обращение к файлу \emph{.m3u8} заканчивается, когда в конце файла обнаруживается тег <<#EXT-X-ENDLIST>>.
         \item[--] \emph{.ts} -- Медиа-файл, небольшой отрывок из исходного видео.
     \end{itemize}
 
@@ -519,18 +542,34 @@
 	video2.ts
 	#EXTINF:8.341667,
 	video3.ts
+	#EXTINF:8.341667,
+	video4.ts
+	#EXTINF:16.683333,
+	video5.ts
+	#EXTINF:8.341667,
+	video6.ts
+	#EXTINF:8.341667,
+	video7.ts
+	#EXTINF:8.341667,
+	video8.ts
+	#EXTINF:8.341667,
+	video9.ts
 	...
+	#EXT-X-ENDLIST
     \end{lstlisting}
 
     \intro{Структура базы данных}
 
-    Приведена схема базы данных (Рис.~\ref{fig:db_scheme}).
+    Ниже приведена структура базы данных (Рис.~\ref{fig:db_scheme}).
 
     В базе данных:
     \begin{itemize}
-        \item[--] таблица \emph{room} хранит информацию о комнатах для просмотра видео;
-        \item[--] таблица \emph{app\_user} хранит информацию о пользователях;
-        \item[--] таблица \emph{flyway\_schema\_history} хранит информацию о применённых миграциях к базе данных.
+        \item[--] Таблица \emph{room} хранит информацию о комнатах для просмотра видео.
+        \item[--] Таблица \emph{app\_user} хранит информацию о пользователях.
+        Каждый \emph{app\_user} привязан к \emph{room} -- за это отвечает поле \emph{room\_id}.
+        Используется для отображения подключённых к комнате пользователей.
+        Также используется для реализации алгоритма <<синхронизации с подтверждением>>, который описан в пункте \emph{3.2.2.1}.
+        \item[--] Таблица \emph{flyway\_schema\_history} хранит информацию о применённых миграциях к базе данных.
     \end{itemize}
 
     \begin{figure}[h]
@@ -543,85 +582,85 @@
     \intro{Описание и функциональное назначение классов}
 
     \begin{table}[h]
-        \caption{\label{tab:class-AuthConfirmView-table}Описание классов модуля MainService}
+        \caption{\label{tab:class-AuthConfirmView-table}Описание классов модуля VideoService}
         \begin{tabularx}{\textwidth}{|l|X|}
             \hline
-            \textbf{Класс}           & \textbf{Назначение}                                                    \\
+            \textbf{Класс}    & \textbf{Назначение}                                                    \\
             \hline
-            MainController              & Контроллер с основными методами.                                        \\
+            VideoController   & Контроллер для взаимодействия с видеофайлами. Используется для загрузки видеофайла на сервер и для получения фрагментов видео после обработки.                          \\
             \hline
-            WebsocketController         & Контроллер с методами для взаимодействия через протокол WebSocket.      \\
+            VideoService      & Сервис для работы с видеофайлами.                                      \\
             \hline
-            RoomService                 & Сервис работы с комнатами.                                              \\
+            FfmpegManager     & Класс для обработки видеофайлов с помощью ffmpeg. Напрямую взаимодействует с консольным инструментом ffmpeg и преобразует информацию в удобный формат.                      \\
             \hline
-            WebsocketService            & Сервис для взаимодействия с WebSocket.                                  \\
+            VideoResolution   & Модель разрешения видео. Имеет вспомогательные методы для различных строковых представлений.                                               \\
             \hline
-            RoomRepository              & Репозиторий для получения информации о комнатах.                        \\
+            MainClient        & Клиент для получения информации из MainService. Обращается к MainService через сервер Eureka.                        \\
             \hline
-            UserRepository              & Репозиторий для получения информации о пользователях.                   \\
+            AppConfig         & Общий конфигуратор сервиса.                                            \\
             \hline
-            WebsocketEventListener      & Слушатель для определения событий подключения/отключения пользователей. \\
+            SwaggerConfig     & Конфигуратор для автоматически генерируемой документации.              \\
             \hline
-            Room                        & Модель комнаты.                                                         \\
-            \hline
-            User                        & Модель пользователя.                                                    \\
-            \hline
-            RoomActionRequest           & Модель запроса для синхронизации видео.                                 \\
-            \hline
-            RoomChatMessageRequest      & Модель запроса для сообщений в чате.                                    \\
-            \hline
-            RoomReactionRequest         & Модель запроса для реакций.                                             \\
-            \hline
-            Response                    & Абстрактная модель ответа.                                              \\
-            \hline
-            RoomActionResponse          & Модель ответа для синхронизации видео.                                  \\
-            \hline
-            RoomChatMessageResponse     & Модель ответа для сообщений в чате.                                     \\
-            \hline
-            RoomJoinResponse            & Модель ответа для подключений к комнате.                                \\
-            \hline
-            RoomLeftResponse            & Модель ответа для выходов из комнаты.                                   \\
-            \hline
-            RoomReactionResponse        & Модель ответа для реакции.                                              \\
-            \hline
-            WebsocketEnums              & Enum классы для WebSocket.                                              \\
-            \hline
-            CustomHandshakeHandler              & Конфигуратор для генерации ID пользователя при подключении к серверу через протокол WebSocket.                                              \\
-            \hline
-            StompPrincipal              & Конфигуратор для получения ID пользователя, подключённого по протоколу WebSocket.                                              \\
-            \hline
-            WebSocketConfig              & Общий конфигуратор WebSocket протокола.                                              \\
-            \hline
-            AppConfig              & Общий конфигуратор сервиса.                                              \\
-            \hline
-            SwaggerConfig              & Конфигуратор для автоматически генерируемой документации.                                              \\
-            \hline
-            WebSecurityConfig              & Конфигуратор безопасности для корректной и безопасной работы клиентов.                                              \\
+            WebSecurityConfig & Конфигуратор безопасности для корректной и безопасной работы клиентов. \\
             \hline
         \end{tabularx}
     \end{table}
 
     \begin{table}[h]
-        \caption{\label{tab:class-AuthConfirmView-table}Описание классов модуля VideoService}
+        \caption{\label{tab:class-AuthConfirmView-table}Описание классов модуля MainService}
         \begin{tabularx}{\textwidth}{|l|X|}
             \hline
-            \textbf{Класс}           & \textbf{Назначение}                              \\
+            \textbf{Класс}          & \textbf{Назначение}                                                                            \\
             \hline
-            VideoController             & Контроллер для взаимодействия с видеофайлами.     \\
+            MainController          & Контроллер с основными методами. Включает в себя методы создания видео в базе, проверки существования комнаты и установки прогресса обработки видео.                                                               \\
             \hline
-            VideoService                & Сервис для работы с видеофайлами.                 \\
+            WebsocketController     & Контроллер с методами для взаимодействия через протокол WebSocket. Включает в себя методы по синхронизации видео, по обмену сообщениями и <<реакциями>>.                             \\
             \hline
-            FfmpegManager               & Класс для обработки видеофайлов с помощью ffmpeg. \\
+            RoomService             & Сервис работы с комнатами. Обращается к базе данных, обрабатывает ответы базы данных.                                                                     \\
             \hline
-            VideoResolution             & Модель разрешения видео.                          \\
+            WebsocketService        & Сервис для взаимодействия с WebSocket.                                                         \\
             \hline
-            MainClient                  & Клиент для получения информации из MainService.   \\
+            RoomRepository          & Репозиторий для получения информации о комнатах.                                               \\
             \hline
-            AppConfig                  & Общий конфигуратор сервиса.   \\
+            UserRepository          & Репозиторий для получения информации о пользователях.                                          \\
             \hline
-            SwaggerConfig                  & Конфигуратор для автоматически генерируемой документации.   \\
+            WebsocketEventListener  & Слушатель для определения событий подключения/отключения пользователей. Если какой-то пользователь подключается или отключается, то уведомление об этом приходит в первую очередь в этот класс.                        \\
             \hline
-            WebSecurityConfig                  & Конфигуратор безопасности для корректной и безопасной работы клиентов.   \\
+            Room                    & Модель комнаты.                                                                                \\
+            \hline
+            User                    & Модель пользователя.                                                                           \\
+            \hline
+            RoomActionRequest       & Модель запроса для синхронизации видео.                                                        \\
+            \hline
+            RoomChatMessageRequest  & Модель запроса для сообщений в чате.                                                           \\
+            \hline
+            RoomReactionRequest     & Модель запроса для реакций.                                                                    \\
+            \hline
+            Response                & Абстрактная модель ответа. Содержит в себе поле, определяющее тип ответа.                                                                     \\
+            \hline
+            RoomActionResponse      & Модель ответа для синхронизации видео. Отправляется, когда кто-то делает запрос на воспроизведение/паузу/перемотку.                                                         \\
+            \hline
+            RoomChatMessageResponse & Модель ответа для сообщений в чате. Отправляется, когда кто-то отправляет сообщение в чат.                                                            \\
+            \hline
+            RoomJoinResponse        & Модель ответа для подключений к комнате. Отправляется, когда кто-то подключается к комнате.                                                       \\
+            \hline
+            RoomLeftResponse        & Модель ответа для выходов из комнаты. Отправляется, когда кто-то выходит из комнаты.                                                          \\
+            \hline
+            RoomReactionResponse    & Модель ответа для реакции. Отправляется, когда кто-то отправляет <<реакцию>>.                                                                     \\
+            \hline
+            WebsocketEnums          & Enum классы для WebSocket.                                                                     \\
+            \hline
+            CustomHandshakeHandler  & Конфигуратор для генерации ID пользователя при подключении к серверу через протокол WebSocket. \\
+            \hline
+            StompPrincipal          & Конфигуратор для получения ID пользователя, подключённого по протоколу WebSocket.              \\
+            \hline
+            WebSocketConfig         & Общий конфигуратор WebSocket протокола.                                                        \\
+            \hline
+            AppConfig               & Общий конфигуратор сервиса.                                                                    \\
+            \hline
+            SwaggerConfig           & Конфигуратор для автоматически генерируемой документации.                                      \\
+            \hline
+            WebSecurityConfig       & Конфигуратор безопасности для корректной и безопасной работы клиентов.                         \\
             \hline
         \end{tabularx}
     \end{table}
@@ -948,8 +987,10 @@
             \hline
             \multicolumn{5}{|c|}{CustomHandshakeHandler} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            determineUser   & public            & Principal         & request: ServerHttpRequest, wsHandler: WebSocketHandler, attributes: MutableMap<String, Any>    & Метод для определения ID нового пользователя      \\ \hline
+            \textbf{Имя}  & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}                                                                                & \textbf{Назначение}                          \\ \hline
+            determineUser & public            & Principal    & request: ServerHttpRequest, wsHandler: WebSocketHandler, attributes: MutableMap<String, Any>
+            & Метод для определения ID нового пользователя
+            \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -959,8 +1000,8 @@
             \hline
             \multicolumn{5}{|c|}{StompPrincipal} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            getName   & public            & String         & -    & Метод для получения ID пользователя      \\ \hline
+            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                 \\ \hline
+            getName      & public            & String       & -             & Метод для получения ID пользователя \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -970,10 +1011,12 @@
             \hline
             \multicolumn{5}{|c|}{WebSocketConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            configureMessageBroker   & public            & void         & config: MessageBrokerRegistry    & Метод для определения базовых путей для общения с сервером по протоколу WebSocket      \\ \hline
-            registerStompEndpoints   & public            & void         & registry: StompEndpointRegistry    & Метод для определения базовых путей для общения с сервером по протоколу WebSocket      \\ \hline
-            configureMessageConverters   & public            & Boolean         & messageConverters: MutableList <MessageConverter?>    & Мето для конфигурации WebSocket      \\ \hline
+            \textbf{Имя}               & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}                                      & \textbf{Назначение}                                                               \\ \hline
+            configureMessageBroker     & public            & void         & config: MessageBrokerRegistry                      & Метод для определения базовых путей для общения с сервером по протоколу WebSocket \\ \hline
+            registerStompEndpoints     & public            & void         & registry: StompEndpointRegistry                    & Метод для определения базовых путей для общения с сервером по протоколу WebSocket \\ \hline
+            configureMessageConverters & public            & Boolean      & messageConverters: MutableList <MessageConverter?>
+            & Мето для конфигурации WebSocket
+            \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -983,8 +1026,8 @@
             \hline
             \multicolumn{5}{|c|}{AppConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            multipartConfigElement   & public            & MultipartConfigElement         & -    & Метод для определения максимального размера загружаемых на сервер файлов      \\ \hline
+            \textbf{Имя}           & \textbf{М. дост.} & \textbf{Тип}           & \textbf{Арг.} & \textbf{Назначение}                                                      \\ \hline
+            multipartConfigElement & public            & MultipartConfigElement & -             & Метод для определения максимального размера загружаемых на сервер файлов \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -994,9 +1037,9 @@
             \hline
             \multicolumn{5}{|c|}{SwaggerConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            api   & public            & Docket?         & -    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
-            addResourceHandlers   & public            & void         & registry: ResourceHandlerRegistry    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+            \textbf{Имя}        & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}                     & \textbf{Назначение}                                                  \\ \hline
+            api                 & public            & Docket?      & -                                 & Метод с базовыми настройками автоматически генерируемой документации \\ \hline
+            addResourceHandlers & public            & void         & registry: ResourceHandlerRegistry & Метод с базовыми настройками автоматически генерируемой документации \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1006,8 +1049,8 @@
             \hline
             \multicolumn{5}{|c|}{WebSecurityConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            configure   & public            & void         & http: HttpSecurity    & Метод с настройками безопасности для корректной и безопасной работы клиентов      \\ \hline
+            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}      & \textbf{Назначение}                                                          \\ \hline
+            configure    & public            & void         & http: HttpSecurity & Метод с настройками безопасности для корректной и безопасной работы клиентов \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1026,14 +1069,14 @@
             MEDIA\_TYPE & private & String & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Тип для загружаемого файла} \\ \hline
             videoService & private & VideoService & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Сервис для работы с видео} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип}                         & \textbf{Арг.}                                                                        & \textbf{Назначение}                                                                  \\ \hline
-            getBaseFile  & public            & ResponseEntity <FileSystem Resource> & response: HttpServletResponse, videoId: String, fileName: String
+            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение} \\ \hline
+            getBaseFile & public & ResponseEntity <FileSystem Resource> & response: HttpServletResponse, videoId: String, fileName: String
             & Метод для получения базового .m3u8 файла с информацией о доступных разрешениях видео
             \\ \hline
-            getVideoFile & public            & ResponseEntity <FileSystem Resource> & response: HttpServletResponse, videoId: String, resolution: String, fileName: String
+            getVideoFile & public & ResponseEntity <FileSystem Resource> & response: HttpServletResponse, videoId: String, resolution: String, fileName: String
             & Метод для получения видеофайлов-сегментов
             \\ \hline
-            uploadFile   & public            & VideoUploadResponse                  & request: HttpServletRequest, file: MultipartFile
+            uploadFile & public & VideoUploadResponse & request: HttpServletRequest, file: MultipartFile
             & Метод для загрузки нового видеофайла на сервер
             \\ \hline
         \end{tabularx}
@@ -1072,14 +1115,14 @@
             DIRECTORY \_PATH & private & String & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Директория для загрузки видео} \\ \hline
             mainClient & private & VideoService & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Клиент для взаимодействия с MainService} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}                & \textbf{М. дост.} & \textbf{Тип}        & \textbf{Арг.}                                                   & \textbf{Назначение}                                                                  \\ \hline
-            createDirectory IfNotExists & private           & void                & realPath: String                                                & Метод для получения базового .m3u8 файла с информацией о доступных разрешениях видео \\ \hline
-            createBaseFile              & private           & void                & path: String, videoId: String, videoResolution: VideoResolution
+            \textbf{Имя}                & \textbf{М. дост.} & \textbf{Тип}        & \textbf{Арг.}                         & \textbf{Назначение}                                                                  \\ \hline
+            createDirectory IfNotExists & private           & void                & realPath: String                      & Метод для получения базового .m3u8 файла с информацией о доступных разрешениях видео \\ \hline
+            createBaseFile & private & void & path: String, videoId: String, videoResolution: VideoResolution
             & Метод для получения видеофайлов-сегментов
             \\ \hline
-            createWork Directories      & private           & void                & realPath: String, videoId: String                               & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
-            saveVideo                   & public            & VideoUploadResponse & file: MultipartFile, realPath: String                           & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
-            onUpdatePercent             & public            & void                & videoUuid: String, percent: Double                              & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
+            createWork Directories      & private           & void                & realPath: String, videoId: String     & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
+            saveVideo                   & public            & VideoUploadResponse & file: MultipartFile, realPath: String & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
+            onUpdatePercent             & public            & void                & videoUuid: String, percent: Double    & Метод для загрузки нового видеофайла на сервер                                       \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1093,11 +1136,11 @@
             width & private & Int & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Ширина видео} \\ \hline
             height & private & Int & \multicolumn{2}{|>{\hsize=\dimexpr2\hsize+2\tabcolsep+\arrayrulewidth\relax}X|}{Высота видео} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}                & \textbf{М. дост.} & \textbf{Тип}        & \textbf{Арг.}                                                   & \textbf{Назначение}                                                                  \\ \hline
-            getBandwidth             & public            & Int                & -                              & Метод для получения разрешения видео                                       \\ \hline
-            getBaseFileText             & public            & String                & -                              & Метод для получения расположения базового файла определённого разрешения                                       \\ \hline
-            toString             & public            & String                & -                              & Метод для текстового представления разрешения                                       \\ \hline
-            compareTo             & public            & Int                & other: VideoResolution                              & Метод для сравнения двух разрешений                                       \\ \hline
+            \textbf{Имя}    & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}          & \textbf{Назначение}                                                      \\ \hline
+            getBandwidth    & public            & Int          & -                      & Метод для получения разрешения видео                                     \\ \hline
+            getBaseFileText & public            & String       & -                      & Метод для получения расположения базового файла определённого разрешения \\ \hline
+            toString        & public            & String       & -                      & Метод для текстового представления разрешения                            \\ \hline
+            compareTo       & public            & Int          & other: VideoResolution & Метод для сравнения двух разрешений                                      \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1119,8 +1162,8 @@
             \hline
             \multicolumn{5}{|c|}{AppConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            multipartConfigElement   & public            & MultipartConfigElement         & -    & Метод для определения максимального размера загружаемых на сервер файлов      \\ \hline
+            \textbf{Имя}           & \textbf{М. дост.} & \textbf{Тип}           & \textbf{Арг.} & \textbf{Назначение}                                                      \\ \hline
+            multipartConfigElement & public            & MultipartConfigElement & -             & Метод для определения максимального размера загружаемых на сервер файлов \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1130,9 +1173,9 @@
             \hline
             \multicolumn{5}{|c|}{SwaggerConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            api   & public            & Docket?         & -    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
-            addResourceHandlers   & public            & void         & registry: ResourceHandlerRegistry    & Метод с базовыми настройками автоматически генерируемой документации      \\ \hline
+            \textbf{Имя}        & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}                     & \textbf{Назначение}                                                  \\ \hline
+            api                 & public            & Docket?      & -                                 & Метод с базовыми настройками автоматически генерируемой документации \\ \hline
+            addResourceHandlers & public            & void         & registry: ResourceHandlerRegistry & Метод с базовыми настройками автоматически генерируемой документации \\ \hline
         \end{tabularx}
     \end{table}
 
@@ -1142,8 +1185,8 @@
             \hline
             \multicolumn{5}{|c|}{WebSecurityConfig} \\ \hline
             \multicolumn{5}{|l|}{\textbf{Методы}} \\ \hline
-            \textbf{Имя}   & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.} & \textbf{Назначение}                      \\ \hline
-            configure   & public            & void         & http: HttpSecurity    & Метод с настройками безопасности для корректной и безопасной работы клиентов      \\ \hline
+            \textbf{Имя} & \textbf{М. дост.} & \textbf{Тип} & \textbf{Арг.}      & \textbf{Назначение}                                                          \\ \hline
+            configure    & public            & void         & http: HttpSecurity & Метод с настройками безопасности для корректной и безопасной работы клиентов \\ \hline
         \end{tabularx}
     \end{table}
 

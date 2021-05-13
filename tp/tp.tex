@@ -1,0 +1,190 @@
+\documentclass{../includes/TechDoc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{inconsolata}
+\lstset{extendedchars=\true}
+\usepackage{courier}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt,frame=bottomline}
+
+\lstset{
+    basicstyle=\ttfamily,
+}
+
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
+
+\title{Приложение для совместного просмотра фильмов}
+\author{Студент группы БПИ-194}{В. А. Анненков}
+\academicTeacher{Старший преподаватель департамента программной инженерии факультета компьютерных наук}{А. В. Поповкин}
+
+\documentTitle{Текст программы}
+\documentCode{RU.17701729.02.07-01 12 01-1}
+
+\begin{document}
+    \maketitle
+
+    \tableofcontents
+
+
+    \section{Текст программы сервиса MainService}
+
+    \subsection{MainServiceApplication.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/MainServiceApplication.kt}
+
+    \subsection{MainController.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/controllers/MainController.kt}
+
+    \subsection{WebsocketController.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/controllers/WebsocketController.kt}
+
+    \subsection{RoomService.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/services/RoomService.kt}
+
+    \subsection{UserService.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/services/UserService.kt}
+
+    \subsection{WebsocketService.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/services/WebsocketService.kt}
+
+    \subsection{RoomRepository.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/repositories/RoomRepository.kt}
+
+    \subsection{UserRepository.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/repositories/UserRepository.kt}
+
+    \subsection{WebsocketEventListener.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/eventlisteners/WebsocketEventListener.kt}
+
+    \subsection{Action.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/Action.kt}
+
+    \subsection{Room.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/Room.kt}
+
+    \subsection{User.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/User.kt}
+
+    \subsection{RoomActionReadyRequest.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/requests/RoomActionReadyRequest.kt}
+
+    \subsection{RoomActionRequest.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/requests/RoomActionRequest.kt}
+
+    \subsection{RoomChatMessageRequest.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/requests/RoomChatMessageRequest.kt}
+
+    \subsection{RoomReactionRequest.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/requests/RoomReactionRequest.kt}
+
+    \subsection{Response.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/Response.kt}
+
+    \subsection{RoomActionResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/RoomActionResponse.kt}
+
+    \subsection{RoomChatMessageResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/RoomChatMessageResponse.kt}
+
+    \subsection{RoomJoinResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/RoomJoinResponse.kt}
+
+    \subsection{RoomLeftResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/RoomLeftResponse.kt}
+
+    \subsection{RoomReactionResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/responses/RoomReactionResponse.kt}
+
+    \subsection{WebsocketEnums.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/entities/websocket/WebsocketEnums.kt}
+
+    \subsection{ActionsStore.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/stores/ActionsStore.kt}
+
+    \subsection{AppConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/AppConfig.kt}
+
+    \subsection{JWTTokenStoreConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/JWTTokenStoreConfig.kt}
+
+    \subsection{ResourceServerConfiguration.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/ResourceServerConfiguration.kt}
+
+    \subsection{SwaggerConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/SwaggerConfig.kt}
+
+    \subsection{WebSecurityConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/WebSecurityConfig.kt}
+
+    \subsection{CustomHandshakeHandler.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/websocket/CustomHandshakeHandler.kt}
+
+    \subsection{StompPrincipal.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/websocket/StompPrincipal.kt}
+
+    \subsection{WebSocketConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/kotlin/tv/comnata/mainservice/configs/websocket/WebSocketConfig.kt}
+
+    \subsection{application.yml}
+    \lstinputlisting[language=Kotlin]{Comnata/main-service/src/main/resources/application.yml}
+
+    \subsection{V1\_\_init.sql}
+    \lstinputlisting[language=SQL]{Comnata/main-service/src/main/resources/db/migration/V1__init.sql}
+
+    \section{Текст программы сервиса VideoService}
+
+    \subsection{MainServiceApplication.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/VideoServiceApplication.java}
+
+    \subsection{VideoController.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/controllers/VideoController.kt}
+
+    \subsection{FfmpegManager.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/services/FfmpegManager.java}
+
+    \subsection{VideoResolution.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/services/VideoResolution.kt}
+
+    \subsection{VideoService.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/services/VideoService.kt}
+
+    \subsection{VideoUploadResponse.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/entities/VideoUploadResponse.kt}
+
+    \subsection{MainClient.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/clients/MainClient.kt}
+
+    \subsection{AppConfig.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/configs/AppConfig.java}
+
+    \subsection{JWTTokenStoreConfig.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/configs/JWTTokenStoreConfig.java}
+
+    \subsection{ResourceServerConfiguration.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/configs/ResourceServerConfiguration.java}
+
+    \subsection{SwaggerConfig.kt}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/java/tv/comnata/videoservice/configs/SwaggerConfig.kt}
+
+    \subsection{WebSecurityConfig.java}
+    \lstinputlisting[language=Java]{Comnata/video-service/src/main/java/tv/comnata/videoservice/configs/WebSecurityConfig.java}
+
+    \subsection{application.yml}
+    \lstinputlisting[language=Kotlin]{Comnata/video-service/src/main/resources/application.yml}
+
+    \section{Текст программы сервиса EurekaServer}
+
+    \subsection{application.yml}
+    \lstinputlisting[language=Kotlin]{Comnata/eureka-server/src/main/resources/application.properties}
+
+    \section{Текст программы сервиса GatewayServer}
+
+    \subsection{application.yml}
+    \lstinputlisting[language=Kotlin]{Comnata/gateway-server/src/main/resources/application.yml}
+
+    \registrationList
+
+\end{document}
