@@ -3,6 +3,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{hyperref}
 \usepackage{amssymb}
+\usepackage{float}
 \usepackage{amsmath,amsthm,mathtools}
 
 \setcounter{tocdepth}{3}
@@ -72,6 +73,43 @@
     Цель проведения испытаний -- проверка корректности работы программы, а также проверка соответствия разработанной программы функциональным требованиям и требованиям к надёжности, изложенным в документе <<Техническое задание>>.
 
     \section{Требования к программе}
+
+    \subsection{Требования к клиентской части}
+    Клиент должен иметь интерфейс, позволяющий пользователю взаимодействовать с программой с минимальной предварительной
+    подготовкой.
+    Дизайн интерфейса должен соответствовать современным тенденциям, обладать адаптивностью под различные характеристики
+    экранов.
+    Интерфейс должен менять свой стиль в зависимости от времени суток для имитации освещения в комнате.
+
+    Клиент реализует три основных экрана.
+    На каждом экране расположен свой набор элементов:\\
+
+    На главной странице:
+    \begin{enumerate}[noitemsep]
+        \item Поле для загрузки файла.
+    \end{enumerate}
+
+    На странице комнаты:
+    \begin{enumerate}[noitemsep]
+        \item Ссылка для подключения к комнате.
+        \item Список участников комнаты.
+        \item Текстовый чат пользователей с возможностью его чтения и отправки сообщений.
+        \item Панель с всплывающими <<реакциями>>.
+        \item Проигрыватель с видео.
+    \end{enumerate}
+
+    В проигрывателе с видео:
+    \begin{enumerate}[noitemsep]
+        \item Кнопка изменения качества видео.
+        \item Возможность отправлять сообщения в чат.
+        \begin{enumerate}
+            \item Обычный текстовый ввод сообщений;
+            \item Отправка «реакций» в виде стикеров для быстрых эмоций.
+        \end{enumerate}
+        \item Отображение сообщений чата.
+    \end{enumerate}
+
+    \subsection{Требования к серверной части}
 
     Программа обеспечивает возможность выполнения следующих функций:
     \begin{enumerate}
@@ -153,7 +191,150 @@
 
     \subsection{Методы испытаний клиента}
 
-    Здесь что-то...
+    \subsubsection{Запуск приложения}
+
+    Для запуска необходимо открыть файл index.html, находящийся в папке start (Рис.~\ref{fig:start_page}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/start_page.png}
+        \caption{Главная страница}
+        \label{fig:start_page}
+    \end{figure}
+
+    \subsubsection{Проверка поля для ввода кода приглашения}
+
+    Случайная комбинация из символов.
+    При таком вводе и попытке запустить комнату/подключиться к комнате ничего не происходит, что является корректным поведением (Рис.~\ref{fig:wrong_code}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/wrong_code.png}
+        \caption{Ввод неправильного кода}
+        \label{fig:wrong_code}
+    \end{figure}
+
+    Введём ID существующей комнаты. При таком вводе и попытке запустить комнату идёт переадресация пользователя в существующую комнату, что является корректным поведением (см. Рис.~\ref{fig:right_code}; Рис.~\ref{fig:player}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/right_code.png}
+        \caption{Ввод корректного кода}
+        \label{fig:right_code}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/player.png}
+        \caption{Страница с проигрывателем}
+        \label{fig:player}
+    \end{figure}
+
+    \subsubsection{Проверка загрузки файла}
+
+    Загрузим файл, который не является видеофайлом.
+    При выборе такого файла и попытке запустить комнату/подключиться к комнате ничего не происходит, что является корректным поведением (Рис.~\ref{fig:wrong_file}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/wrong_file.png}
+        \caption{Загрузка некорректного файла}
+        \label{fig:wrong_file}
+    \end{figure}
+
+    Загрузим корректный файл.
+    При выборе такого файла и попытке запустить комнату идёт переадресация пользователя в существующую комнату, что является корректным поведением (см. Рис.~\ref{fig:right_code}; Рис.~\ref{fig:player2}).
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/right_code.png}
+        \caption{Загрузка корректного файла}
+        \label{fig:right_file}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/player.png}
+        \caption{Страница с проигрывателем}
+        \label{fig:player2}
+    \end{figure}
+
+    \subsubsection{Проверка чата}
+
+    Протестируем чат.
+    При вводе очень длинного слова, очень длинного приложения, строки из знаков, происходит запланированное разработчиком отображение.
+    При нажатии на ENTER происходит отправка сообщения (Рис.~\ref{fig:chat_big_text}).
+    Пустое сообщение отправить нельзя.
+    Всё вышеописанное поведение является правильно работающим функционалом.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{../images/chat_big_text.png}
+        \caption{Демонстрация работы чата}
+        \label{fig:chat_big_text}
+    \end{figure}
+
+    \subsubsection{Проверка блока над чатом}
+
+    Протестируем верхний блок над чатом.
+    При нажатии на кнопку ID копируется в буфер обмена.
+    При переполнении пользователями появляется горизонтальный скроллбар с возможностью прокрутки для отображения пользователей.
+    При наведении на пользователя показывается никнейм (Рис.~\ref{fig:block_users}).
+    Всё вышеописанное поведение является правильно работающим функционалом.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{../images/block_users.png}
+        \caption{Демонстрация работы блока над чатом}
+        \label{fig:block_users}
+    \end{figure}
+
+    \subsubsection{Проверка блока реакций}
+
+    Протестируем блок реакций.
+    При нажатии на кнопку появляется соответствующая реакция с фоном цвета пользователя, который её отправил (Рис.~\ref{fig:reactions}).
+    Всё вышеописанное поведение является правильно работающим функционалом.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.6\linewidth]{../images/reactions.png}
+        \caption{Демонстрация работы блока реакций}
+        \label{fig:reactions}
+    \end{figure}
+
+    \subsubsection{Проверка кнопки полноэкранного режима}
+
+    Протестируем кнопку полноэкранного режима.
+    При нажатии на кнопку появляется видео переходит в полноэкранный режим, с сдвижением всех нужных элементов (см Рис.~\ref{fig:player3}; Рис.~\ref{fig:full_screen}).
+    При повторном нажатии происходит возвращение к нормальному положению.
+    Всё вышеописанное поведение является правильно работающим функционалом.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/player.png}
+        \caption{Страница с проигрывателем}
+        \label{fig:player3}
+    \end{figure}
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/full_screen.png}
+        \caption{Полный экран}
+        \label{fig:full_screen}
+    \end{figure}
+
+    \subsubsection{Проверка кнопок управления видео}
+
+    Протестируем кнопки управления видео.
+    Каждую кнопку выполняется с предварительным запросом на сервер советующее действие (Рис.~\ref{fig:actions}).
+    Настройка звука, качества и полноэкранного режима происходит индивидуально, без взаимодействия с сервером.
+
+    \begin{figure}[H]
+        \centering
+        \includegraphics[width=0.9\linewidth]{../images/actions.png}
+        \caption{Демонстрация кнопок управления}
+        \label{fig:actions}
+    \end{figure}
 
     \subsection{Методы испытаний сервера}
 
@@ -189,7 +370,7 @@
     В файловой системе сервера появилась папка видео (Рис.~\ref{fig:hls1}), в которой находится ролик в формате HLS.
     Имя у папки совпадает с уникальным идентификатором видео.
 
-    \begin{figure}[h]
+    \begin{figure}[H]
         \centering
         \includegraphics[width=0.7\linewidth]{../images/hls1.png}
         \caption{Папка со всеми видео}
@@ -198,7 +379,7 @@
 
     Внутри папки (Рис.~\ref{fig:hls2}) находятся вложенные папки, содержащие обработанные версии видео с разными разрешениями (Рис.~\ref{fig:hls3}), а также файл с расширением \emph{.m3u8}.
 
-    \begin{figure}[h]
+    \begin{figure}[H]
         \begin{center}
             \begin{minipage}[h]{0.49\linewidth}
                 \includegraphics[width=1\linewidth]{../images/hls2.png}
